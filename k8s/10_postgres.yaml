@@ -1,0 +1,71 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: postgres-pvc
+  namespace: telemetria-iot
+spec:
+  accessModes: ["ReadWriteOnce"]
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: postgres
+  namespace: telemetria-iot
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: {app: postgres}
+  template:
+    metadata:
+      labels: {app: postgres}
+    spec:
+      containers:
+        - name: postgres
+          image: postgres:16-alpine
+          imagePullPolicy: IfNotPresent
+          # Memoria acotada: shared_buffers bajo y pocas conexiones (3 procesadores x 8 = 24).
+          args: ["-c", "shared_buffers=64MB", "-c", "max_connections=60"]
+          ports: [{containerPort: 5432}]
+          env:
+            - {name: POSTGRES_DB, value: telemetria}
+            - {name: POSTGRES_USER, value: iotuser}
+            - {name: PGDATA, value: /var/lib/postgresql/data/pgdata}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef: {name: postgres-secret, key: password}
+          resources:
+            requests: {cpu: 200m, memory: 192Mi}
+            limits: {cpu: 1000m, memory: 512Mi}
+          readinessProbe:
+            exec:
+              command: ["sh", "-c", "pg_isready -U iotuser -d telemetria"]
+            initialDelaySeconds: 4
+            periodSeconds: 5
+          livenessProbe:
+            exec:
+              command: ["sh", "-c", "pg_isready -U iotuser -d telemetria"]
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            failureThreshold: 6
+          volumeMounts:
+            - {name: datos, mountPath: /var/lib/postgresql/data}
+            - {name: esquema, mountPath: /docker-entrypoint-initdb.d, readOnly: true}
+      volumes:
+        - name: datos
+          persistentVolumeClaim: {claimName: postgres-pvc}
+        - name: esquema
+          configMap: {name: postgres-init}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: postgres
+  namespace: telemetria-iot
+spec:
+  selector: {app: postgres}
+  ports: [{port: 5432, targetPort: 5432}]

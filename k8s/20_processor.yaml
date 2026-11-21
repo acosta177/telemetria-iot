@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: procesador
+  namespace: telemetria-iot
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: procesador}
+  template:
+    metadata:
+      labels: {app: procesador}
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+        - name: procesador
+          image: iot-procesador:1.0
+          imagePullPolicy: Never
+          ports: [{containerPort: 8001}]
+          env:
+            - {name: POSTGRES_HOST, value: postgres}
+            - {name: POSTGRES_DB, value: telemetria}
+            - {name: POSTGRES_USER, value: iotuser}
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef: {name: postgres-secret, key: password}
+          readinessProbe:
+            httpGet: {path: /health/ready, port: 8001}
+            initialDelaySeconds: 3
+            periodSeconds: 2   # corto a proposito: acota el error al medir recuperacion (E4)
+            failureThreshold: 2
+          livenessProbe:
+            httpGet: {path: /health/live, port: 8001}
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          resources:
+            requests: {cpu: 150m, memory: 96Mi}
+            limits: {cpu: 500m, memory: 192Mi}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: procesador
+  namespace: telemetria-iot
+spec:
+  selector: {app: procesador}
+  ports: [{port: 8001, targetPort: 8001}]

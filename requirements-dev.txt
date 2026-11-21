@@ -1,0 +1,5 @@
+-r api/requirements.txt
+-r processor/requirements.txt
+pytest>=8,<10
+pandas>=2,<4
+matplotlib>=3.8,<4

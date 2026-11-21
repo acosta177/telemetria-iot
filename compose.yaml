@@ -1,0 +1,48 @@
+# Solo para probar la integracion basica en el Dia 1 (sin Kubernetes).
+# E2/E4 usan Minikube. No lo ejecutes a la vez que el despliegue en Minikube si usas el puerto 8000.
+name: telemetria-iot
+services:
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: telemetria
+      POSTGRES_USER: iotuser
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-cambiar_contrasena_local}
+    volumes:
+      - datos_postgres:/var/lib/postgresql/data
+      - ./db/init/001_schema.sql:/docker-entrypoint-initdb.d/001_schema.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U iotuser -d telemetria"]
+      interval: 5s
+      timeout: 3s
+      retries: 15
+  procesador:
+    build:
+      context: .
+      dockerfile: processor/Dockerfile
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: telemetria
+      POSTGRES_USER: iotuser
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-cambiar_contrasena_local}
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8001/health/ready', timeout=3)"]
+      interval: 10s
+      timeout: 5s
+      retries: 12
+  api:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    ports:
+      - "8000:8000"
+    environment:
+      PROCESSOR_URL: http://procesador:8001
+    depends_on:
+      procesador:
+        condition: service_healthy
+volumes:
+  datos_postgres:

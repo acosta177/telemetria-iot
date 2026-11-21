@@ -1,0 +1,7 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+.env
+.DS_Store
+# Los resultados SI se versionan (son entregable): CSV de resumen, JSON, CSV crudos comprimidos y graficas.

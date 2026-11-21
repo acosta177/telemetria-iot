@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  namespace: telemetria-iot
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: api}
+  template:
+    metadata:
+      labels: {app: api}
+    spec:
+      containers:
+        - name: api
+          image: iot-api:1.0
+          imagePullPolicy: Never
+          ports: [{containerPort: 8000}]
+          env:
+            - {name: PROCESSOR_URL, value: 'http://procesador:8001'}
+            - {name: HTTP_KEEPALIVE, value: '0'}
+          readinessProbe:
+            httpGet: {path: /health/ready, port: 8000}
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet: {path: /health/live, port: 8000}
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          resources:
+            requests: {cpu: 200m, memory: 80Mi}
+            limits: {cpu: 1000m, memory: 192Mi}
+---
+# NodePort: la carga entra por $(minikube ip):30080 SIN kubectl port-forward,
+# que fijaria la conexion a un solo pod y distorsionaria la comparacion de replicas.
+apiVersion: v1
+kind: Service
+metadata:
+  name: api
+  namespace: telemetria-iot
+spec:
+  type: NodePort
+  selector: {app: api}
+  ports: [{port: 8000, targetPort: 8000, nodePort: 30080}]
