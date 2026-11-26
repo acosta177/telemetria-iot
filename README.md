@@ -26,7 +26,6 @@ k6 (sensores simulados) ──► API FastAPI ──► Service "procesador" ─
 | [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md) | Diseño, endpoints, modelo de datos, hipótesis |
 | [`docs/PROTOCOLO_EXPERIMENTAL.md`](docs/PROTOCOLO_EXPERIMENTAL.md) | Cómo se ejecuta y mide cada prueba |
 | [`docs/INFORME_TECNICO_PLANTILLA.md`](docs/INFORME_TECNICO_PLANTILLA.md) | Estructura del informe final |
-| [`docs/DEFENSA_INDIVIDUAL.md`](docs/DEFENSA_INDIVIDUAL.md) | Preguntas de práctica para la defensa |
 
 ## Inicio rápido (Ubuntu en WSL 2, dentro de `~/`, no en `/mnt/c`)
 ```bash
