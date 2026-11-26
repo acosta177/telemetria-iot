@@ -23,7 +23,6 @@ k6 (sensores simulados) ──► API FastAPI ──► Service "procesador" ─
 | Archivo | Para qué |
 |---|---|
 | [`docs/GUIA_ENTORNO_WINDOWS.md`](docs/GUIA_ENTORNO_WINDOWS.md) | Preparar WSL 2, Docker, Minikube, k6 y GitHub (paso a paso) |
-| [`docs/PLAN_4_DIAS.md`](docs/PLAN_4_DIAS.md) | Qué hace cada día y cada integrante |
 | [`docs/ARQUITECTURA.md`](docs/ARQUITECTURA.md) | Diseño, endpoints, modelo de datos, hipótesis |
 | [`docs/PROTOCOLO_EXPERIMENTAL.md`](docs/PROTOCOLO_EXPERIMENTAL.md) | Cómo se ejecuta y mide cada prueba |
 | [`docs/INFORME_TECNICO_PLANTILLA.md`](docs/INFORME_TECNICO_PLANTILLA.md) | Estructura del informe final |
