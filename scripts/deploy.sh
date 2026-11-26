@@ -3,17 +3,15 @@
 set -euo pipefail
 cd "$(dirname "$0")/.."
 NS=telemetria-iot
-DB_PASSWORD="${DB_PASSWORD:-cambiar_contrasena_local}"
-MINIKUBE_CPUS="${MINIKUBE_CPUS:-3}"
-MINIKUBE_MEMORY="${MINIKUBE_MEMORY:-2800mb}"
+: "${DB_PASSWORD:?Error: define DB_PASSWORD antes de ejecutar el despliegue}"
 
 for c in docker minikube kubectl; do
   command -v "$c" >/dev/null || { echo "Falta instalar $c (ver docs/GUIA_ENTORNO_WINDOWS.md)" >&2; exit 1; }
 done
 
-if ! minikube status >/dev/null 2>&1; then
-  echo ">> Iniciando Minikube ($MINIKUBE_CPUS CPUs, $MINIKUBE_MEMORY)"
-  minikube start --driver=docker --cpus="$MINIKUBE_CPUS" --memory="$MINIKUBE_MEMORY"
+if ! minikube status -p minikube >/dev/null 2>&1; then
+  echo ">> Iniciando Minikube con el perfil existente"
+  minikube start -p minikube --driver=docker
 fi
 minikube addons enable metrics-server >/dev/null || true
 

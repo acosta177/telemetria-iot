@@ -7,7 +7,7 @@ services:
     environment:
       POSTGRES_DB: telemetria
       POSTGRES_USER: iotuser
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-cambiar_contrasena_local}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Define DB_PASSWORD en .env}
     volumes:
       - datos_postgres:/var/lib/postgresql/data
       - ./db/init/001_schema.sql:/docker-entrypoint-initdb.d/001_schema.sql:ro
@@ -24,7 +24,7 @@ services:
       POSTGRES_HOST: postgres
       POSTGRES_DB: telemetria
       POSTGRES_USER: iotuser
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-cambiar_contrasena_local}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?Define DB_PASSWORD en .env}
     depends_on:
       postgres:
         condition: service_healthy
@@ -38,7 +38,7 @@ services:
       context: .
       dockerfile: api/Dockerfile
     ports:
-      - "8000:8000"
+      - "${API_HOST_PORT:-8000}:8000"
     environment:
       PROCESSOR_URL: http://procesador:8001
     depends_on:

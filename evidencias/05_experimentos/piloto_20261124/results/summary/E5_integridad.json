@@ -1,0 +1,23 @@
+{
+  "prefijo_sensores": "E5-27251c",
+  "lecturas_enviadas": 600,
+  "lecturas_confirmadas": 600,
+  "lecturas_en_bd": 600,
+  "lecturas_perdidas": 0,
+  "lecturas_duplicadas": 0,
+  "alertas_criticas_confirmadas": 120,
+  "alertas_criticas_en_bd": 120,
+  "alertas_criticas_perdidas": 0,
+  "lecturas_con_alerta_faltante": 0,
+  "reintentos_por_error_transitorio": 3,
+  "sin_confirmar_tras_20_intentos": 0,
+  "fallos_inyectados": [
+    "delete pod procesador-5689cf6cf8-pj75l",
+    "rollout restart procesador"
+  ],
+  "duracion_s": 26.4,
+  "integridad_verificada": true,
+  "e5b_total_lecturas_antes_reinicio_postgres": 15442,
+  "e5b_total_lecturas_despues_reinicio_postgres": 15442,
+  "e5b_persistencia_verificada": true
+}

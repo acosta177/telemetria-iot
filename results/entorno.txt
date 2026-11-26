@@ -1,0 +1,52 @@
+Fecha UTC: 2026-11-25T16:48:34Z
+Kernel: 6.18.58.1-microsoft-standard-WSL2
+CPUs visibles: 4
+model name	: Intel(R) Core(TM) i5-1035G1 CPU @ 1.00GHz
+               total        used        free      shared  buff/cache   available
+Mem:           3.8Gi       1.5Gi        61Mi        63Mi       2.3Gi       2.1Gi
+Swap:          2.0Gi       386Mi       1.6Gi
+Docker: Docker version 29.2.1, build a5c7197
+Minikube: v1.39.0
+kubectl: Client Version: v1.37.2
+Kubernetes (servidor): Server Version: v1.37.0
+k6: k6 v2.4.0 (commit/dd9395906d, go1.26.11, linux/amd64)
+Nodo:
+NAME       STATUS   ROLES           AGE     VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                         KERNEL-VERSION                              CONTAINER-RUNTIME
+minikube   Ready    control-plane   3d17h   v1.37.0   192.168.49.2   <none>        Debian GNU/Linux 12 (bookworm)   6.18.58.1-microsoft-standard-WSL2 (amd64)   containerd://2.3.4
+Recursos del nodo:
+Capacity:
+  cpu:                4
+  ephemeral-storage:  1081101176832
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             4012596Ki
+  pods:               110
+Allocatable:
+  cpu:                4
+  ephemeral-storage:  1081101176832
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             4012596Ki
+  pods:               110
+Pods:
+NAME                          READY   STATUS    RESTARTS      AGE     IP            NODE       NOMINATED NODE   READINESS GATES
+api-784d6c9c96-r8khz          1/1     Running   7 (56m ago)   3d17h   10.244.0.8    minikube   <none>           <none>
+postgres-5799859569-8jvwj     1/1     Running   0             19h     10.244.0.30   minikube   <none>           <none>
+procesador-59dc6b5d45-5qcm9   1/1     Running   3 (12h ago)   19h     10.244.0.29   minikube   <none>           <none>
+procesador-59dc6b5d45-w9vtq   1/1     Running   2 (56m ago)   19h     10.244.0.28   minikube   <none>           <none>
+Commit: 33706a5
+NOTA: anota tambien a mano que programas de Windows estaban abiertos.
+
+Configuracion de Windows:
+RAM fisica reportada: 7.75 GB
+Procesador: Intel Core i5-1035G1
+Nucleos fisicos: 4
+Procesadores logicos: 8
+
+Configuracion WSL (.wslconfig):
+memory=4GB
+processors=4
+swap=2GB
+
+Programas abiertos durante los experimentos:
+[PENDIENTE DE COMPLETAR]

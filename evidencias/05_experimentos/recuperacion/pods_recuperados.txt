@@ -1,0 +1,4 @@
+NAME                          READY   STATUS    RESTARTS        AGE     IP            NODE       NOMINATED NODE   READINESS GATES
+api-784d6c9c96-r8khz          1/1     Running   4 (5h41m ago)   2d21h   10.244.0.8    minikube   <none>           <none>
+postgres-5799859569-l9brx     1/1     Running   0               2d21h   10.244.0.4    minikube   <none>           <none>
+procesador-5689cf6cf8-xzlv8   1/1     Running   0               5m37s   10.244.0.12   minikube   <none>           <none>

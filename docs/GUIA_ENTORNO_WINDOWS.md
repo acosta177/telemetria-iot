@@ -25,7 +25,7 @@ swap=2GB
 ```
 > Corrección respecto a la primera versión del plan: `processors=4` (no 2). Con 2 procesadores k6 y Minikube se
 > pelean por CPU y las mediciones salen distorsionadas. Windows ve 8 hilos, así que 4 deja la mitad libre.
-> Si Windows se pone muy lento, baja a 3 y usa `MINIKUBE_CPUS=2`.
+> Si Windows se pone muy lento, cierra aplicaciones innecesarias y revisa los límites de memoria y CPU de WSL.
 
 ## 4. Activar systemd (en Ubuntu)
 ```bash
@@ -51,7 +51,9 @@ Usamos **Docker Engine dentro de Ubuntu**, no Docker Desktop (ahorra ~1 GB de RA
 .venv/bin/python -m pytest -q
 docker compose up --build -d
 curl localhost:8000/health/live
-docker compose down -v
+docker compose down
+
+# Usa "docker compose down -v" únicamente si deseas eliminar también los volúmenes y los datos de la base de datos.
 ```
 
 ## 7. GitHub (primera vez)
@@ -80,21 +82,35 @@ git push -u origin feat/nombre-corto      # abrir Pull Request en GitHub; otro i
 Los PR dejan evidencia de la contribución individual para la defensa.
 
 ## 8. Desplegar en Minikube
+
+Configura `DB_PASSWORD` en `.env` antes del despliegue. No publiques ese archivo.
+
 ```bash
+set -a
+source .env
+set +a
+
 bash scripts/deploy.sh
+
 export BASE_URL=http://$(minikube ip):30080
 curl $BASE_URL/health/live
 kubectl -n telemetria-iot get pods
 ```
-`deploy.sh` inicia Minikube con 3 CPUs y 2800 MB (cámbialo con `MINIKUBE_CPUS` / `MINIKUBE_MEMORY`),
-construye las imágenes dentro del clúster y aplica los YAML. Tras cambiar código, vuelve a ejecutarlo.
+
+Si el NodePort no es accesible desde WSL, abre otra terminal y ejecuta:
+
+```bash
+kubectl port-forward -n telemetria-iot svc/api 18000:8000
+```
+
+En ese caso, utiliza `http://127.0.0.1:18000` para acceder a la API. Tras cambiar el código, vuelve a ejecutar el despliegue.
 
 ## 9. Problemas frecuentes
 | Síntoma | Causa / solución |
 |---|---|
 | `permission denied` con docker | No reabriste la terminal tras `usermod -aG docker`. |
 | `docker: Cannot connect to the Docker daemon` | `sudo systemctl start docker` (¿activaste systemd? paso 4). |
-| Windows se congela | Cierra apps; baja `memory`/`processors` en `.wslconfig`; `MINIKUBE_MEMORY=2400mb`. |
+| Windows se congela | Cierra aplicaciones y revisa los límites `memory` y `processors` de `.wslconfig`. |
 | Pod `OOMKilled` | Sube el límite de memoria en `k8s/*.yaml` o baja réplicas; cierra otras apps. |
 | `ImagePullBackOff` / `ErrImageNeverPull` | Falta construir imágenes: `bash scripts/deploy.sh`. |
 | `curl` a `minikube ip:30080` no responde | `minikube status`; `kubectl -n telemetria-iot get svc api`; ¿usas Docker Desktop en vez de Engine? |

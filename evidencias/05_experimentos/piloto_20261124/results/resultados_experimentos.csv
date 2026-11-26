@@ -1,0 +1,10 @@
+escenario,replicas,vus,duracion_configurada,repeticion,solicitudes_por_segundo,latencia_mediana_ms,latencia_p95_ms,tasa_error_http,tasa_error_negocio,lecturas_creadas,alertas_criticas_confirmadas,solicitudes_fallidas,ventana_errores_s,tiempo_recuperacion_pod_s,pod_eliminado,csv_crudo,resumen_json
+E1_base,1,10,10s,1,79.02262083890778,79.286103,150.621097,0,0,795,12,0,0,,,results/raw/E1_base_r1_vu10_rep1.csv.gz,results/summary/E1_base_r1_vu10_rep1.json
+E2_escalabilidad,1,20,10s,1,108.4918870488326,176.05409500000002,282.33643079999996,0,0,1094,21,0,0,,,results/raw/E2_escalabilidad_r1_vu20_rep1.csv.gz,results/summary/E2_escalabilidad_r1_vu20_rep1.json
+E2_escalabilidad,2,20,10s,1,101.65328059703027,172.9084335,339.53672285,0,0,1024,15,0,0,,,results/raw/E2_escalabilidad_r2_vu20_rep1.csv.gz,results/summary/E2_escalabilidad_r2_vu20_rep1.json
+E2_escalabilidad,3,20,10s,1,111.7891823307014,125.10761,562.9292953999995,0,0,1219,27,0,0,,,results/raw/E2_escalabilidad_r3_vu20_rep1.csv.gz,results/summary/E2_escalabilidad_r3_vu20_rep1.json
+E3_concurrencia,2,5,10s,1,84.02959419953467,35.75617,68.879752,0,0,841,22,0,0,,,results/raw/E3_concurrencia_r2_vu5_rep1.csv.gz,results/summary/E3_concurrencia_r2_vu5_rep1.json
+E3_concurrencia,2,20,10s,1,166.07489767764957,138.029651,260.328848,0,0,1331,18,0,0,,,results/raw/E3_concurrencia_r2_vu20_rep1.csv.gz,results/summary/E3_concurrencia_r2_vu20_rep1.json
+E3_concurrencia,2,50,10s,1,126.47329414746298,346.020903,687.1765320499984,0,0,1294,17,0,0,,,results/raw/E3_concurrencia_r2_vu50_rep1.csv.gz,results/summary/E3_concurrencia_r2_vu50_rep1.json
+E3_idempotencia,2,20,10s,1,136.08533714551365,130.982737,274.61771059999984,0,0,,,0,0,,,results/raw/E3_idempotencia_r2_vu20_rep1.csv.gz,results/summary/E3_idempotencia_r2_vu20_rep1.json
+E4_fallo_pod,2,20,25s,1,138.00862648690986,139.266866,282.2015366,0.002508623392913139,0.002508623392913139,3181,59,8,1,6.63,procesador-5689cf6cf8-dc489,results/raw/E4_fallo_pod_r2_vu20_rep1.csv.gz,results/summary/E4_fallo_pod_r2_vu20_rep1.json

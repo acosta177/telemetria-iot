@@ -1,0 +1,4 @@
+NAME                          CPU(cores)   MEMORY(bytes)
+api-784d6c9c96-r8khz          5m           44Mi
+postgres-5799859569-l9brx     14m          29Mi
+procesador-5689cf6cf8-xzlv8   7m           49Mi

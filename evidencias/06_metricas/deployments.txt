@@ -1,0 +1,4 @@
+NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+api          1/1     1            1           2d21h
+postgres     1/1     1            1           2d21h
+procesador   1/1     1            1           2d21h

@@ -1,0 +1,108 @@
+
+         /\      Grafana   /‾‾/  
+    /\  /  \     |\  __   /  /   
+   /  \/    \    | |/ /  /   ‾‾\ 
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/ 
+
+
+     execution: local
+        script: /home/hope/telemetria-iot/experiments/k6_telemetria.js
+        output: csv (/home/hope/telemetria-iot/results/raw/E2_escalabilidad_r3_vu20_rep1.csv.gz)
+
+     scenarios: (100.00%) 1 scenario, 20 max VUs, 1m0s max duration (incl. graceful stop):
+              * default: 20 looping VUs for 30s (gracefulStop: 30s)
+
+
+running (0m00.7s), 20/20 VUs, 0 complete and 0 interrupted iterations
+default   [   2% ] 20 VUs  00.7s/30s
+
+running (0m01.6s), 20/20 VUs, 16 complete and 0 interrupted iterations
+default   [   5% ] 20 VUs  01.6s/30s
+
+running (0m02.7s), 20/20 VUs, 25 complete and 0 interrupted iterations
+default   [   9% ] 20 VUs  02.7s/30s
+
+running (0m03.6s), 20/20 VUs, 41 complete and 0 interrupted iterations
+default   [  12% ] 20 VUs  03.6s/30s
+
+running (0m04.6s), 20/20 VUs, 85 complete and 0 interrupted iterations
+default   [  15% ] 20 VUs  04.6s/30s
+
+running (0m05.6s), 20/20 VUs, 219 complete and 0 interrupted iterations
+default   [  19% ] 20 VUs  05.6s/30s
+
+running (0m06.6s), 20/20 VUs, 256 complete and 0 interrupted iterations
+default   [  22% ] 20 VUs  06.6s/30s
+
+running (0m07.6s), 20/20 VUs, 326 complete and 0 interrupted iterations
+default   [  25% ] 20 VUs  07.6s/30s
+
+running (0m08.6s), 20/20 VUs, 430 complete and 0 interrupted iterations
+default   [  29% ] 20 VUs  08.6s/30s
+
+running (0m09.6s), 20/20 VUs, 547 complete and 0 interrupted iterations
+default   [  32% ] 20 VUs  09.6s/30s
+
+running (0m10.6s), 20/20 VUs, 700 complete and 0 interrupted iterations
+default   [  35% ] 20 VUs  10.6s/30s
+
+running (0m11.6s), 20/20 VUs, 836 complete and 0 interrupted iterations
+default   [  39% ] 20 VUs  11.6s/30s
+
+running (0m12.6s), 20/20 VUs, 955 complete and 0 interrupted iterations
+default   [  42% ] 20 VUs  12.6s/30s
+
+running (0m13.6s), 20/20 VUs, 1115 complete and 0 interrupted iterations
+default   [  45% ] 20 VUs  13.6s/30s
+
+running (0m14.6s), 20/20 VUs, 1270 complete and 0 interrupted iterations
+default   [  49% ] 20 VUs  14.6s/30s
+
+running (0m15.6s), 20/20 VUs, 1449 complete and 0 interrupted iterations
+default   [  52% ] 20 VUs  15.6s/30s
+
+running (0m14.5s), 20/20 VUs, 1587 complete and 0 interrupted iterations
+default   [  55% ] 20 VUs  16.6s/30s
+
+running (0m15.5s), 20/20 VUs, 1649 complete and 0 interrupted iterations
+default   [  59% ] 20 VUs  17.6s/30s
+
+running (0m16.5s), 20/20 VUs, 1749 complete and 0 interrupted iterations
+default   [  62% ] 20 VUs  18.6s/30s
+
+running (0m17.5s), 20/20 VUs, 1876 complete and 0 interrupted iterations
+default   [  65% ] 20 VUs  19.6s/30s
+
+running (0m18.5s), 20/20 VUs, 2009 complete and 0 interrupted iterations
+default   [  69% ] 20 VUs  20.6s/30s
+
+running (0m19.5s), 20/20 VUs, 2128 complete and 0 interrupted iterations
+default   [  72% ] 20 VUs  21.6s/30s
+
+running (0m20.5s), 20/20 VUs, 2252 complete and 0 interrupted iterations
+default   [  75% ] 20 VUs  22.6s/30s
+
+running (0m21.5s), 20/20 VUs, 2367 complete and 0 interrupted iterations
+default   [  79% ] 20 VUs  23.6s/30s
+
+running (0m22.5s), 20/20 VUs, 2530 complete and 0 interrupted iterations
+default   [  82% ] 20 VUs  24.6s/30s
+
+running (0m23.5s), 20/20 VUs, 2651 complete and 0 interrupted iterations
+default   [  85% ] 20 VUs  25.6s/30s
+
+running (0m24.5s), 20/20 VUs, 2655 complete and 0 interrupted iterations
+default   [  89% ] 20 VUs  26.6s/30s
+
+running (0m25.5s), 20/20 VUs, 2807 complete and 0 interrupted iterations
+default   [  92% ] 20 VUs  27.6s/30s
+
+running (0m26.5s), 20/20 VUs, 2869 complete and 0 interrupted iterations
+default   [  95% ] 20 VUs  28.6s/30s
+
+running (0m27.5s), 20/20 VUs, 2977 complete and 0 interrupted iterations
+default   [  99% ] 20 VUs  29.6s/30s
+
+running (0m27.9s), 00/20 VUs, 3043 complete and 0 interrupted iterations
+default ✓ [ 100% ] 20 VUs  30s

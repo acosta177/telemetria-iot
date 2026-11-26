@@ -1,0 +1,23 @@
+{
+  "prefijo_sensores": "E5-90697f",
+  "lecturas_enviadas": 2400,
+  "lecturas_confirmadas": 2400,
+  "lecturas_en_bd": 2400,
+  "lecturas_perdidas": 0,
+  "lecturas_duplicadas": 0,
+  "alertas_criticas_confirmadas": 480,
+  "alertas_criticas_en_bd": 480,
+  "alertas_criticas_perdidas": 0,
+  "lecturas_con_alerta_faltante": 0,
+  "reintentos_por_error_transitorio": 27,
+  "sin_confirmar_tras_20_intentos": 0,
+  "fallos_inyectados": [
+    "delete pod procesador-5859998d8c-vsghb",
+    "rollout restart procesador"
+  ],
+  "duracion_s": 39.6,
+  "integridad_verificada": true,
+  "e5b_total_lecturas_antes_reinicio_postgres": 138082,
+  "e5b_total_lecturas_despues_reinicio_postgres": 138082,
+  "e5b_persistencia_verificada": true
+}

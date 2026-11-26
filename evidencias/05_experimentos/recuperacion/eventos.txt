@@ -1,0 +1,30 @@
+LAST SEEN   TYPE      REASON              OBJECT                             MESSAGE
+56m         Warning   Unhealthy           pod/postgres-5799859569-l9brx      Liveness probe failed: command timed out: "sh -c pg_isready -U iotuser -d telemetria" timed out after 1s
+42m         Warning   Unhealthy           pod/postgres-5799859569-l9brx      Readiness probe failed: command timed out: "sh -c pg_isready -U iotuser -d telemetria" timed out after 1s
+40m         Warning   Unhealthy           pod/procesador-644f775479-czg7s    Readiness probe failed: Get "http://10.244.0.9:8001/health/ready": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+36m         Warning   Unhealthy           pod/api-784d6c9c96-r8khz           Readiness probe failed: Get "http://10.244.0.8:8000/health/ready": context deadline exceeded (Client.Timeout exceeded while awaiting headers)
+31m         Normal    SuccessfulCreate    replicaset/procesador-5689cf6cf8   Created pod: procesador-5689cf6cf8-vz7p9
+31m         Normal    ScalingReplicaSet   deployment/procesador              Scaled up replica set procesador-5689cf6cf8 from 0 to 1
+31m         Normal    Scheduled           pod/procesador-5689cf6cf8-vz7p9    Successfully assigned telemetria-iot/procesador-5689cf6cf8-vz7p9 to minikube
+30m         Normal    Started             pod/procesador-5689cf6cf8-vz7p9    Container started
+30m         Normal    Pulled              pod/procesador-5689cf6cf8-vz7p9    Container image "iot-procesador:1.0" already present on machine and can be accessed by the pod
+30m         Normal    Created             pod/procesador-5689cf6cf8-vz7p9    Container created
+30m         Normal    ScalingReplicaSet   deployment/procesador              Scaled down replica set procesador-644f775479 from 1 to 0
+30m         Normal    Killing             pod/procesador-644f775479-czg7s    Stopping container procesador
+30m         Normal    SuccessfulDelete    replicaset/procesador-644f775479   Deleted pod: procesador-644f775479-czg7s
+30m         Warning   Unhealthy           pod/procesador-644f775479-czg7s    Readiness probe failed: Get "http://10.244.0.9:8001/health/ready": dial tcp 10.244.0.9:8001: connect: connection refused
+19m         Normal    SuccessfulCreate    replicaset/procesador-5689cf6cf8   Created pod: procesador-5689cf6cf8-grmk8
+19m         Normal    Scheduled           pod/procesador-5689cf6cf8-grmk8    Successfully assigned telemetria-iot/procesador-5689cf6cf8-grmk8 to minikube
+19m         Normal    Killing             pod/procesador-5689cf6cf8-vz7p9    Stopping container procesador
+19m         Normal    Pulled              pod/procesador-5689cf6cf8-grmk8    Container image "iot-procesador:1.0" already present on machine and can be accessed by the pod
+19m         Normal    Created             pod/procesador-5689cf6cf8-grmk8    Container created
+19m         Normal    Started             pod/procesador-5689cf6cf8-grmk8    Container started
+19m         Warning   Unhealthy           pod/procesador-5689cf6cf8-vz7p9    Readiness probe failed: Get "http://10.244.0.10:8001/health/ready": dial tcp 10.244.0.10:8001: connect: connection refused
+5m54s       Normal    Scheduled           pod/procesador-5689cf6cf8-xzlv8    Successfully assigned telemetria-iot/procesador-5689cf6cf8-xzlv8 to minikube
+5m54s       Normal    SuccessfulCreate    replicaset/procesador-5689cf6cf8   Created pod: procesador-5689cf6cf8-xzlv8
+5m54s       Normal    Killing             pod/procesador-5689cf6cf8-grmk8    Stopping container procesador
+5m53s       Normal    Pulled              pod/procesador-5689cf6cf8-xzlv8    Container image "iot-procesador:1.0" already present on machine and can be accessed by the pod
+5m52s       Normal    Started             pod/procesador-5689cf6cf8-xzlv8    Container started
+5m52s       Warning   Unhealthy           pod/procesador-5689cf6cf8-grmk8    Readiness probe failed: Get "http://10.244.0.11:8001/health/ready": dial tcp 10.244.0.11:8001: connect: connection refused
+5m52s       Normal    Created             pod/procesador-5689cf6cf8-xzlv8    Container created
+5m49s       Warning   Unhealthy           pod/procesador-5689cf6cf8-xzlv8    Readiness probe failed: Get "http://10.244.0.12:8001/health/ready": dial tcp 10.244.0.12:8001: connect: connection refused

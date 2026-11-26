@@ -1,0 +1,10 @@
+PRUEBA E3 - CONCURRENCIA
+
+Solicitudes concurrentes: 40
+HTTP 201: 1
+HTTP 200: 39
+Errores: 0
+Lecturas en BD: 1
+Alertas en BD: 1
+Duplicados: 0
+Resultado: EXITOSO

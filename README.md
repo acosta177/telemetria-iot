@@ -34,15 +34,30 @@ k6 (sensores simulados) ──► API FastAPI ──► Service "procesador" ─
 bash scripts/setup_wsl.sh          # instala Docker, kubectl, Minikube, k6 (una vez)
 bash scripts/verificar_entorno.sh  # comprueba todo
 
+# Configurar contraseña local (solo la primera vez)
+cp .env.example .env
+nano .env                          # define DB_PASSWORD con una contraseña propia
+# Usa una contraseña hexadecimal generada, por ejemplo: openssl rand -hex 32
+
 # 1) Prueba local sin Kubernetes
-.venv/bin/python -m pytest -q      # pruebas unitarias
+.venv/bin/python -m pytest -q
 docker compose up --build -d       # API en http://localhost:8000/docs
-docker compose down -v
+docker compose down
+
+# ADVERTENCIA: usa "docker compose down -v" solo si deseas eliminar
+# también los volúmenes y los datos de la base de datos.
 
 # 2) Despliegue real en Minikube
-bash scripts/deploy.sh             # imprime la URL (http://IP_MINIKUBE:30080)
+set -a
+source .env
+set +a
+bash scripts/deploy.sh
 export BASE_URL=http://$(minikube ip):30080
 curl $BASE_URL/health/live
+
+# Si el NodePort no es accesible desde WSL, usa otra terminal:
+kubectl port-forward -n telemetria-iot svc/api 18000:8000
+# API alternativa: http://127.0.0.1:18000
 ```
 
 Enviar una lectura de prueba:

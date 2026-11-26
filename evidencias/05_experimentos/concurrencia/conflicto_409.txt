@@ -1,0 +1,11 @@
+PRUEBA DE IDEMPOTENCIA Y CONFLICTO
+
+Mismo sensor y timestamp.
+Valores diferentes.
+
+Respuesta HTTP: 409 Conflict
+
+El sistema rechazó la lectura duplicada
+con valores diferentes.
+
+Resultado: EXITOSO

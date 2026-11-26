@@ -1,0 +1,16 @@
+PRUEBA E4 - RECUPERACION DE KUBERNETES
+
+1. Se eliminó el Pod del procesador.
+2. Kubernetes creó un nuevo Pod.
+3. El Deployment terminó correctamente el rollout.
+4. El procesador alcanzó estado Running 1/1.
+5. La API respondió HTTP 200 en health/ready.
+6. Se envió una nueva lectura.
+7. La API respondió HTTP 201.
+8. PostgreSQL confirmó el almacenamiento.
+
+Sensor: SENS-RECUP-002
+Temperatura: 25.5
+Consumo: 300 W
+
+Resultado: EXITOSO
